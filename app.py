@@ -1,11 +1,12 @@
 from flask import Flask, request, jsonify
 from flask_swagger_ui import get_swaggerui_blueprint
 from PIL import Image
+import numpy as np
 import ocrengine
 
 app = Flask(__name__)
 
-easyocr = ocrengine.create_easyocr_reader()
+ocr_engine = ocrengine.create_easyocr_reader()
 
 @app.route('/ocr', methods=['POST'])
 def ocr():
@@ -18,8 +19,7 @@ def ocr():
 
     if file:
         image = Image.open(file)
-        #ocr_result = ocrengine.ocr_recognition(image)
-        ocr_result=easyocr(image)
+        ocr_result=ocr_engine(np.array(image))
         return jsonify({'ocr_result': ocr_result}),200
 
     return jsonify({'error': 'An error occurred during file processing'}),404
