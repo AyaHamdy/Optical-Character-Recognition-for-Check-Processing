@@ -56,8 +56,8 @@ class TestOCRApp(unittest.TestCase):
             self.assertEqual(response.status_code, 200, "Should succeed with status code 200")
             self.assertIn('ocr_result', response.json, "Response JSON should contain 'ocr_result' key")
             self.assertEqual(response.json['ocr_result'], {
-                "Amount": "#25,538.00#",
-                "Check No": "Dooooo 125"
+                "Amount": "25,538.00",
+                "Check No": "000000125"
             }, "OCR results should match the expected output")
             
     def test_invalid_route(self):
