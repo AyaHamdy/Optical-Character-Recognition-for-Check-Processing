@@ -1,4 +1,6 @@
 Flask
+numpy
+imutils
 Pillow
 easyocr
 flask-swagger-ui
