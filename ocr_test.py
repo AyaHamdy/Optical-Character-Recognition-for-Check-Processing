@@ -27,7 +27,7 @@ class TestOCRApp(unittest.TestCase):
     @patch('app.easyocr')
     def test_valid_file_upload(self, mock_easyocr):
         print("Testing valid file upload...")
-        mock_easyocr.return_value = {'Amount': '#100#', 'Check No': '123456'}
+        mock_easyocr.return_value = {'Amount': '25,538.00', 'Check No': '000000125'}
         img = Image.new('RGB', (60, 30), color = (73, 109, 137))
         img_byte_arr = BytesIO()
         img.save(img_byte_arr, format='PNG')
@@ -37,7 +37,7 @@ class TestOCRApp(unittest.TestCase):
         response = self.app.post('/ocr', content_type='multipart/form-data', data=data)
         self.assertEqual(response.status_code, 200, "Should succeed with status code 200")
         self.assertIn('ocr_result', response.json, "Response JSON should contain 'ocr_result' key")
-        self.assertEqual(response.json['ocr_result'], {'Amount': '#100#', 'Check No': '123456'},
+        self.assertEqual(response.json['ocr_result'], {'Amount': '25,538.00', 'Check No': '000000125'},
                          "OCR results should match the expected output")
 
     def test_valid_file_upload_with_local_image(self):
