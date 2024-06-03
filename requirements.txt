@@ -1,6 +1,4 @@
 Flask
-numpy
-imutils
-Pillow
-easyocr
+paddlepaddle
+paddleocr
 flask-swagger-ui
