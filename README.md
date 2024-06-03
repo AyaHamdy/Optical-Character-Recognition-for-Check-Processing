@@ -5,11 +5,7 @@ This is a Flask Api for performing OCR on uploaded images. The application uses 
 
 ## Usage
 
-1. Clone the repository:
-
-```bash
-git clone https://github.com/your-username/your-repository.git
-cd your-repository
+1. Clone the repository
 ```
 2. Build the Docker image:
 
